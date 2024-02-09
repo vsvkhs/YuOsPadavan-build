@@ -60,7 +60,6 @@ jobs:
         #因不同型号配置功能不一样，所以先把配置项删除，如果你自己要添加其他的，也要写上删除这一条，切记！！！
         ################################################################################################
         sed -i 's/CONFIG_FIRMWARE_INCLUDE_DNSFORWARDER=n/CONFIG_FIRMWARE_INCLUDE_DNSFORWARDER=y/g' .config
-        sed -i 's/CONFIG_FIRMWARE_INCLUDE_MENTOHUST=n/CONFIG_FIRMWARE_INCLUDE_MENTOHUST=y/g' .config
         sed -i 's/CONFIG_FIRMWARE_INCLUDE_SCUTCLIENT=n/CONFIG_FIRMWARE_INCLUDE_SCUTCLIENT=y/g' .config
         sed -i 's/CONFIG_FIRMWARE_INCLUDE_SRELAY=n/CONFIG_FIRMWARE_INCLUDE_SRELAY=y/g' .config
         sed -i 's/CONFIG_FIRMWARE_INCLUDE_SHADOWSOCKS=n/CONFIG_FIRMWARE_INCLUDE_SHADOWSOCKS=y/g' .config
@@ -69,7 +68,6 @@ jobs:
         #以下选项是定义你需要的功能（y=集成,n=忽略），重新写入到.config文件
         ######################################################################
         if [ $KERNEL = "4.4" ] ; then
-        echo "CONFIG_FIRMWARE_INCLUDE_MENTOHUST=n" >> .config #MENTOHUST
         echo "CONFIG_FIRMWARE_INCLUDE_SCUTCLIENT=n" >> .config #SCUTCLIENT
         echo "CONFIG_FIRMWARE_INCLUDE_SHADOWSOCKS=y" >> .config #SS plus+
         echo "CONFIG_FIRMWARE_INCLUDE_SSOBFS=n" >> .config # simple-obfs混淆插件
@@ -83,7 +81,6 @@ jobs:
         echo "CONFIG_FIRMWARE_INCLUDE_ZEROTIER=n" >> .config #zerotier ~1.3M
         echo "CONFIG_FIRMWARE_INCLUDE_ALIDDNS=y" >> .config #aliddns
         else
-        echo "CONFIG_FIRMWARE_INCLUDE_MENTOHUST=y" >> .config #MENTOHUST
         echo "CONFIG_FIRMWARE_INCLUDE_SCUTCLIENT=n" >> .config #SCUTCLIENT
         echo "CONFIG_FIRMWARE_INCLUDE_SHADOWSOCKS=y" >> .config #SS plus+
         echo "CONFIG_FIRMWARE_INCLUDE_SSOBFS=y" >> .config # simple-obfs混淆插件
